@@ -1,0 +1,413 @@
+:root {
+    --primary-color: #ffffff;
+    --secondary-color: #cccccc;
+    --accent-color: #ffffff;
+    --text-color: #ffffff;
+    --light-text: #ffffff;
+    --bg-color: #000000;
+    --card-bg: #111111;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: var(--transition);
+}
+
+body {
+    font-family: 'Playwrite IS', cursive;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.8;
+    overflow-x: hidden;
+    direction: ltr;
+}
+
+.wedding-title {
+    font-family: 'Yeseva One', cursive;
+    letter-spacing: 5px;
+}
+
+.couple-names {
+    font-family: 'Yeseva One', cursive;
+    font-weight: 400;
+}
+
+header {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+}
+
+.wedding-title {
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: 300;
+    opacity: 0;
+    animation: fadeIn 1.5s ease forwards;
+    color: var(--primary-color);
+}
+
+.couple-names {
+    font-size: 5rem;
+    margin: 30px 0;
+    color: var(--primary-color);
+    opacity: 0;
+    animation: fadeIn 1.5s ease forwards 0.5s;
+    position: relative;
+    display: inline-block;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.couple-names::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    bottom: -10px;
+    left: 0;
+    transform: scaleX(0);
+    transition: transform 0.5s ease;
+}
+
+.couple-names:hover::after {
+    transform: scaleX(1);
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 20px;
+}
+
+.section {
+    text-align: center;
+    margin-bottom: 80px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: var(--transition);
+    background-color: var(--card-bg);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
+
+.section.active {
+    animation: fadeInUp 1s ease forwards;
+}
+
+.section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    font-weight: 400;
+    position: relative;
+    display: inline-block;
+    color: var(--primary-color);
+    font-family: 'Yeseva One', cursive;
+}
+
+h2:after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 1px;
+    background: var(--primary-color);
+    bottom: -10px;
+    left: 25%;
+    transition: width 0.3s ease;
+}
+
+h2:hover:after {
+    width: 80%;
+    left: 10%;
+}
+
+p {
+    font-size: 1.3rem;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    transition: var(--transition);
+    color: var(--light-text);
+    font-family: 'Playwrite IS', cursive;
+}
+
+p:hover {
+    letter-spacing: 0.5px;
+}
+
+.details {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.detail-box {
+    flex: 1;
+    min-width: 250px;
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    background-color: var(--card-bg);
+}
+
+.detail-box::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    z-index: -1;
+    background: linear-gradient(45deg, #ffffff, #cccccc, #ffffff);
+    background-size: 400%;
+    opacity: 0;
+    transition: 0.5s;
+    animation: animate 20s linear infinite;
+    border-radius: 5px;
+}
+
+.detail-box:hover::before {
+    opacity: 0.1;
+}
+
+.detail-box:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.detail-box i {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.detail-box:hover i {
+    transform: scale(1.2);
+}
+
+.detail-box h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-weight: 400;
+    transition: var(--transition);
+    color: var(--primary-color);
+    font-family: 'Yeseva One', cursive;
+}
+
+.detail-box:hover h3 {
+    letter-spacing: 1px;
+}
+
+.detail-box p {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.map-container {
+    width: 100%;
+    height: 400px;
+    border-radius: 5px;
+    margin-top: 30px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.map-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.map-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 30px;
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Playwrite IS', cursive;
+}
+
+.map-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+    background-color: var(--secondary-color);
+}
+
+footer {
+    text-align: center;
+    padding: 50px 20px;
+    background: var(--card-bg);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+}
+
+footer p {
+    font-size: 1.2rem;
+    position: relative;
+    display: inline-block;
+    color: var(--primary-color);
+    font-family: 'Playwrite IS', cursive;
+}
+
+footer p::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: var(--primary-color);
+    bottom: -5px;
+    left: 0;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+footer:hover p::after {
+    transform: scaleX(1);
+}
+
+.scroll-effect {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.scroll-effect.active {
+    opacity: 1;
+}
+
+.scroll-effect i {
+    color: white;
+    font-size: 1.5rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { 
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes animate {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 300% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+@media (max-width: 768px) {
+    .couple-names {
+        font-size: 3.5rem;
+    }
+    
+    .wedding-title {
+        font-size: 1.2rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    p {
+        font-size: 1.1rem;
+    }
+    
+    .detail-box {
+        min-width: 100%;
+    }
+    
+    .map-container {
+        height: 300px;
+    }
+    
+    .section {
+        padding: 30px 20px;
+    }
+}
